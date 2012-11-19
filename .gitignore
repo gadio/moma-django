@@ -1,0 +1,16 @@
+*~
+*#*
+.DS*
+*.cm
+*.class
+*.pyc
+*.pyd
+build/
+doc/_build/
+dist/
+tools/settings.py
+*.so
+nosetests.xml
+setup.cfg
+*.egg
+.tox
