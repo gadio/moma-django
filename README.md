@@ -12,13 +12,13 @@ Features
 * Django administration: most of the administration functions are supported for Mongo based models
 * Testing: support the creation of an alternative mongodb collection for unit tests
 * Relationships between models on SQL db and Mongo: limited support. ForeignKeys can be defined but transactions or cascading delete is not supported
-* Django query: support for queries as well as Q statements. Not supported yet: annotations and aggregations
-* Enhanced Django query: queries can include "drill into" objects. E.g. for a record **>>> Entry = {a:3, b:{k1:4, k2:3,km:'a'}}**  you can do (note the b__km__regexp "drill into"): **>>> qs = Entry.objects.filter(a__gte=2,b__km__regexp='^a$') )**
+* Django query: support for queries (e.g. `date__gte` notation) as well as Q statements. Not supported yet: annotations and aggregations
+* Enhanced Django query: queries can include "drill into" objects. E.g. for a record `entry = {a:3, b:{k1:4, k2:3,km:'a'}}` you can query: `qs = Entry.objects.filter(a__gte=2,b__km__regexp='^a$') )` (note the `b__km__regexp` "drill into")
 
 
 Why?
 ----
-There are other packages out there that create tight integration between MongoDB and django. Why create another one?
+There are other packages out there that create tight integration between MongoDB and django. **Why use this one?**
 This package was originally created as a part of very careful experimentation with MongoDB, and developed in small increments. The reason was
 that we couldn't afford a radical change like replacing the entire Django or moving completely to a NoSQL type of environment.
 This package allowed us to enjoy both worlds without massive impact on the project. It is used in production, as part of a high scale & performance project.
