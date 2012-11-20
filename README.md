@@ -79,6 +79,7 @@ Authors
 + http://twitter.com/gadioren
 + http://github.com/gadio
 
+Additional contributor https://github.com/Alerion (as part of a contract position with Lucidel)
 
 
 Copyright and license
