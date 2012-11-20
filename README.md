@@ -1,8 +1,38 @@
-[Lucidel MoMa-Django](http://twitter.github.com/gadio/moma-django) 
+[MoMa-Django](http://twitter.github.com/gadio/moma-django), by Lucidel
 =================
 
-MoMa-Django is a Mongo Manager for Django. It provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework enabling quick experimentation with NonSQL and have the a single application that uses both databases together, created and maintained by [Gadi Oren](http://twitter.com/gadioren).
+MoMa-Django is a Mongo Manager for Django. It provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework allowing an application to have models both on SQL database *and* on Mongo, and a quick experimentation / migration path from SQL only to a mixed model. Created and maintained by [Gadi Oren](http://twitter.com/gadioren), as a part of the [Lucidel](http://lucidel.com) product.
 
+
+Features
+--------
+* Adoption: changing a model to reside on MongoDB is as simple as changing the inheritance from django.db.models.Model to MongoModel!
+* Model features: large subset of the model capabilities is supported (e.g. unique together)
+* Enhanced model: Mongo models can include lists and dictionaries as a field
+* Django administration: most of the administration functions are supported for Mongo based models
+* Testing: support the creation of an alternative mongodb collection for unit tests
+* Relationships between models on SQL db and Mongo: limited support. ForeignKeys can be defined but transactions or cascading delete is not supported
+* Django query: support for queries as well as Q statements. Not supported yet: annotations and aggregations
+* Enhanced Django query: queries can include "drill into" objects. E.g. for a record
+>>> Entry = {a:3, b:{k1:4, k2:3,km:'a'}}
+you can do (note the b__km__regexp
+>>> Entry.objects.filter(a__gte=2,b__km__regexp='^a$') )
+
+
+Why?
+----
+There are other packages out there that create tight integration between MongoDB and django. Why create another one?
+This package was originally created as a part of very careful experimentation with MongoDB, and developed in small increments. The reason was
+that we couldn't afford a radical change like replacing the entire Django or moving completely to a NoSQL type of environment.
+This package allowed us to enjoy both worlds without massive impact on the project.
+If that is the type of decision and constraints that you are facing, this package may be a good option.
+
+
+Dependencies
+------------
+* Django 1.4.1
+* PyMongo 2.1.1
+* djangotoolbox 0.9.2
 
 
 Quick start
@@ -30,7 +60,7 @@ And constructed with the following guidelines:
 Bug tracker
 -----------
 
-Have a bug? Please create an issue here on GitHub that conforms with [Gadi's guidelines](https://github.com/).
+Have a bug? Please create an issue here on GitHub that conforms with [the guidelines](https://github.com/).
 
 https://github.com/gadio/moma-django/issues
 
@@ -39,6 +69,7 @@ https://github.com/gadio/moma-django/issues
 Twitter account
 ---------------
 
+Please follow us on Twitter, [@lucidinsights](http://twitter.com/lucidinsights).
 Keep up to date on announcements and more by following Gadi on Twitter, [@gadioren](http://twitter.com/gadioren).
 
 
@@ -46,6 +77,7 @@ Keep up to date on announcements and more by following Gadi on Twitter, [@gadior
 Blog
 ----
 
+Lucidel blog can be found [here](http://blog.lucidel.com).
 Read more detailed announcements, discussions, and more on [The Official Blog](http://blog.gadioren.com).
 
 
@@ -60,7 +92,7 @@ Have a question? Ask on our mailing list!
 Developers
 ----------
 
-test
+How to test: TBD
 
 
 
