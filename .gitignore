@@ -1,6 +1,7 @@
 *~
 *#*
 .DS*
+.idea*
 *.cm
 *.class
 *.pyc
