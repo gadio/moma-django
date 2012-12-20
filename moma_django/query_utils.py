@@ -19,12 +19,10 @@ from .exceptions import MongoQuerySetExeption
 from datetime import datetime, date
 
 def fix_value(value):
-    #if isinstance(value, models.Model):
-    #    return value.pk
-    
+
     if isinstance(value, datetime):
         return value
-    
+
     if isinstance(value, date):
         return datetime(value.year, value.month, value.day)
 
@@ -45,10 +43,12 @@ class MongoQ(object):
     AND = "$and"
     REGEX = "$regex"
     IREGEX = "$regex"
+    BSON_TYPE = "$type"
+    EXISTS = "$exists"
 
     lookups = {
-        'pk': None, 
-        'id': None, 
+        'pk': None,
+        'id': None,
         'not': NOT,
         'gt': GT,
         'gte': GTE,
@@ -58,7 +58,9 @@ class MongoQ(object):
         'in': IN,
         'regex': REGEX,
         'iregex': IREGEX,
-    }
+        'type' : BSON_TYPE,
+        'exists' : EXISTS,
+        }
 
     additional_options = {
         'iregex' : {'$options': 'i'}
@@ -77,12 +79,24 @@ class MongoQ(object):
         NOR : OR,
     }
 
+    BSON_TYPES = {
+        float : 1,
+        str: 2,
+        object: 3,
+        list: 4,
+        bool: 8,
+        date: 9,
+        datetime: 9,
+        None: 10,
+        int: 16,
+        }
+
     def __init__(self, negate, filter, value):
         self.negate = negate
         self.filter = filter
         self._value = value
         self._dotFieldNotation = False
-    
+
     def __deepcopy__(self, memodict):
         q = self.__class__(self.negate, self.filter, self._value)
         return q
@@ -155,25 +169,30 @@ class MongoQ(object):
 
     def spec(self, model):
         lookup, params = self._analyze_field_lookups(model)
-        
+
         if lookup not in self.lookups:
             raise MongoQuerySetExeption('Does not support "%s" lookup' % lookup)
 
         filter = None
-        
+
         filter = self.lookups[lookup]
-        
+
         field_name = self._get_field_first_part()
         field = self.getModelField(field_name, model)
 
-        value = fix_value(field.get_prep_lookup(lookup, self._value))
+        if lookup in self.lookups and self.lookups[lookup]  == self.EXISTS:
+            value = self._value
+        elif lookup in self.lookups and self.lookups[lookup]  == self.BSON_TYPE:
+            value = self.BSON_TYPES[self._value]
+        else:
+            value = fix_value(field.get_prep_lookup(lookup, self._value))
 
         additional_options = {}
         if lookup in self.additional_options:
             additional_options = self.additional_options[lookup]
 
         spec = self.construct_spec(self.negate, filter, value, additional_options)
-        
+
         return spec
 
 
