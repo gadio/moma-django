@@ -1,4 +1,4 @@
-Lucidel [MoMa-Django](http://twitter.github.com/gadio/moma-django)
+[MoMa-Django](http://twitter.github.com/gadio/moma-django)
 =================
 
 MoMa-Django is a Mongo Manager for Django. It provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework allowing an application to have models both on SQL database *and* on Mongo, and a quick experimentation / migration path from SQL only to a mixed model. Created and maintained by [Gadi Oren](http://twitter.com/gadioren), as a part of the [Lucidel](http://lucidel.com) product.
