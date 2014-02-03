@@ -3,7 +3,7 @@
 
 MoMa-Django is a Mongo Manager for Django. **It provides native Django ORM support for Mongo DB**.
 
-MoMa-Django provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework allowing an application to have models both on SQL database *and* on Mongo, and a quick experimentation / migration path from SQL only to a mixed model. Created and maintained by [Gadi Oren](http://twitter.com/gadioren), as a part of the [Lucidel](http://lucidel.com) product.
+MoMa-Django provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework allowing an application to have models both on SQL database *and* on Mongo, and a quick experimentation / migration path from SQL only to a mixed model. Created and maintained by [Gadi Oren](http://twitter.com/gadioren), as a part of the [Lucidel](http://lucidel.com) and [Cloudoscope](http://cloudoscope.com) products.
 
 
 Features
@@ -69,7 +69,7 @@ https://github.com/gadio/moma-django/issues
 Twitter account
 ---------------
 
-Please follow us on Twitter, [@lucidinsights](http://twitter.com/lucidinsights).
+Please follow us on Twitter, [@cloudoscope_inc](http://twitter.com/cloudoscope_inc).
 Keep up to date on announcements and more by following Gadi on Twitter, [@gadioren](http://twitter.com/gadioren).
 
 
@@ -77,8 +77,8 @@ Keep up to date on announcements and more by following Gadi on Twitter, [@gadior
 Blog
 ----
 
-Lucidel blog can be found [here](http://blog.lucidel.com).
-Read more detailed announcements, discussions, and more on [The Official Blog](http://blog.gadioren.com).
+Cloudoscope blog can be found [here](http://blog.cloudoscope.com).
+Read more detailed announcements, discussions, and more on [The Official Blog](http://blog.cloudoscope.com).
 
 
 
