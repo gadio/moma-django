@@ -16,6 +16,7 @@ Features
 * Relationships between models on SQL db and Mongo: limited support. ForeignKeys can be defined but transactions or cascading delete is not supported
 * Django query: support for queries (e.g. `date__gte` notation) as well as Q statements. Not supported yet: annotations and aggregations
 * Enhanced Django query: queries can include "drill into" objects. E.g. for a record `entry = {a:3, b:{k1:4, k2:3,km:'a'}}` you can query: `qs = Entry.objects.filter(a__gte=2,b__km__regexp='^a$') )` (note the `b__km__regexp` "drill into")
+* South: applications can contain regular and mongo models. However, in order to use south, the mongo models should be excluded of the south management (see documentation on how to exclude mongo models)
 
 
 Why?
