@@ -15,7 +15,7 @@
 #==========================================================================
 
 from django.contrib import admin
-from models import UniqueVisit
+from models import UniqueVisit, TestModel1, TestModel2, TestModel3, AnalyticsAccount, Profile
 
 
 class UniqueVisitAdmin(admin.ModelAdmin):
@@ -24,4 +24,25 @@ class UniqueVisitAdmin(admin.ModelAdmin):
     list_filter = ['account', 'date', ]
 
 
+class TestModel1Admin(admin.ModelAdmin):
+    list_display = ['id', 'start_date', 'some_id', 'values',]
+
+class TestModel2Admin(admin.ModelAdmin):
+    list_display = ['id', 'start_date', 'some_id', 'values',]
+
+class TestModel3Admin(admin.ModelAdmin):
+    list_display = ['id', 'start_date', 'some_id', 'values',]
+
+class AnalyticsAccountAdmin(admin.ModelAdmin):
+    list_display = ['name', 'user', 'created_on', ]
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['username', 'first_name', 'last_name', 'company_name' ]
+
 admin.site.register(UniqueVisit, UniqueVisitAdmin)
+admin.site.register(TestModel1, TestModel1Admin)
+admin.site.register(TestModel2, TestModel2Admin)
+admin.site.register(TestModel3, TestModel3Admin)
+admin.site.register(AnalyticsAccount, AnalyticsAccountAdmin)
+admin.site.register(Profile, ProfileAdmin)
