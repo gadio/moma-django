@@ -18,7 +18,7 @@ from copy import deepcopy
 from django.utils.tree import Node
 from .query_utils import fix_value
 import pymongo
-from pymongo.errors import AutoReconnect, ConfigurationError
+from pymongo.errors import AutoReconnect
 from .exceptions import MongoQuerySetExeption
 from django.conf import settings
 from .query_utils import MongoQ, negate_where_clause
@@ -48,7 +48,10 @@ def get_collection(model, use_collection_name_prefix=None, override_default_db_n
         from django.db import connections
         default_connection = connections['default']
         default_db_name = default_connection.settings_dict['NAME']
-        if (not override_default_db_name) and default_db_name.startswith('test_'):
+        # the 'test_' is for a full sql db (e.g. mysql). The ':memory:' is for testing situation with sqlite as the main db
+        if (not override_default_db_name) and default_db_name == ':memory:':
+            collection_name = 'test_'+collection_name
+        elif (not override_default_db_name) and default_db_name.startswith('test_'):
             collection_name = default_db_name
         if use_collection_name_prefix is not None:
             collection_name = use_collection_name_prefix + collection_name

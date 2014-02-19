@@ -92,7 +92,7 @@ Have a question? Ask on our mailing list!
 Developers
 ----------
 
-How to test: TBD
+How to test: Please read moma_example/HOW_TO_RUN.txt about running tests.
 
 
 
@@ -117,7 +117,7 @@ Additional contributor https://github.com/Alerion (as part of a contract positio
 Copyright and license
 ---------------------
 
-Copyright 2012 Lucidel, Inc.
+Copyright 2012 Lucidel, Inc., 2013 Cloudoscope Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
