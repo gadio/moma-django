@@ -13,7 +13,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #==========================================================================
+from django.contrib.auth.models import User
 
 from django.db import models
+from moma_django import MongoModel, post_syncdb_mongo_handler
+from moma_django.fields import MongoDateTimeField, DictionaryField
 
-# Create your models here.
+
+
+# Enabling South for the non conventional mongo model
+#
+# add_introspection_rules(
+#     [
+#         (
+#             (MongoIdField, MongoDateTimeField, DictionaryField ),
+#             [],
+#             {
+#                 "max_length":   ["max_length",   {"default": None}],
+#                 },
+#         ),
+#         ],
+#     ["^mongo_django.fields.*",])
+
+
+class Question(MongoModel):
+    user = models.ForeignKey(User)
+    date = MongoDateTimeField(db_index=True)
+    question = models.CharField(max_length=256 )
+
+    image = DictionaryField(models.FloatField())
+    audio = DictionaryField(models.IntegerField())
+    other = DictionaryField()
+
+
+    def __unicode__(self):
+        return u'%s[%s %s]' % (self.question, self.date, self.user, )
+
+    class Meta:
+        unique_together = ['user', 'question',]
+        managed = False
+
+models.signals.post_syncdb.connect(post_syncdb_mongo_handler)
+
