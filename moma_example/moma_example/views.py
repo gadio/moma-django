@@ -38,14 +38,15 @@ def auth_view(request):
         return HttpResponseRedirect('/accounts/invalid')
 
 def loggedin(request):
-    return render_to_response('loggedin.html', {'full_name': request.user.username})
+    # return render_to_response('loggedin.html', {'full_name': request.user.username, 'the_user': request.user})
+    return HttpResponseRedirect('/q/home')
 
 def invalid_login(request):
-    return render_to_response('invalid_login.html')
+    return render_to_response('invalid_login.html', {'the_user': request.user})
 
 def logout(request):
     auth.logout(request)
-    return render_to_response('logout.html')
+    return render_to_response('logout.html', { 'the_user': request.user})
 
 def register_user(request):
     if request.method == 'POST':
@@ -57,11 +58,13 @@ def register_user(request):
             args = {}
             args.update(csrf(request))
             args['form'] = form
+            args['the_user'] = request.user
             return render_to_response('register.html', args)
 
     args = {}
     args.update(csrf(request))
     args['form'] = UserCreationForm()
+    args['the_user'] = request.user
 
     return render_to_response('register.html', args)
 

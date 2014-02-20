@@ -15,26 +15,45 @@
 {## limitations under the License.#}
 {##==========================================================================#}
 {##}
-<html>
+<html lang="en">
 {% load staticfiles  %}
 {% load i18n %}
 {% load url from future %}
 
 <head>
     <meta charset="utf-8">
-    <!-- Always force latest IE rendering engine or request Chrome Frame -->
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <!-- Use title if it's in the page YAML frontmatter -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% trans "empty" %}{% endblock %}</title>
     <link rel="shortcut icon" href="/media/favicon.ico" />
 
+    {% block bs_css %}
+        <!-- Bootstrap -->
+        <link href="/media/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    {% endblock %}
     {% block css %}{% endblock %}
-    {% block js %}{% endblock %}
+    {% block js %}
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
 </head>
 
 <body>
+{% block _navbar %}
+    {% include "_navbar.html" %}
+{% endblock _navbar %}
 {% block extra %}{% endblock %}
 {% block body %}{% endblock %}
+{% block bs_js %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/media/bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}
 {% block extra_js %}{% endblock %}
 </body>
 </html>

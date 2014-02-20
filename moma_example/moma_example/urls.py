@@ -17,6 +17,7 @@
 import data
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from moma_example import settings
 
 admin.autodiscover()
 
@@ -30,14 +31,15 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 
     # User auth urls
-    url(r'^accounts/login/$', 'moma_example.views.login'),
+    url(r'^accounts/login/$', 'moma_example.views.login', name='login'),
     url(r'^accounts/auth/$', 'moma_example.views.auth_view'),
-    url(r'^accounts/logout/$', 'moma_example.views.logout'),
+    url(r'^accounts/logout/$', 'moma_example.views.logout', name='logout'),
     url(r'^accounts/loggedin/$', 'moma_example.views.loggedin'),
     url(r'^accounts/invalid/$', 'moma_example.views.invalid_login'),
-    url(r'^accounts/register/$', 'moma_example.views.register_user'),
+    url(r'^accounts/register/$', 'moma_example.views.register_user', name='register'),
     url(r'^accounts/register_success/$', 'moma_example.views.register_success'),
 
     url(r'^q/home/$', 'data.views.questions_home'),

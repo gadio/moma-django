@@ -1,23 +1,33 @@
 {% extends 'base.html' %}
+{% load bootstrap  %}
 
 {% block title %}Login{% endblock %}
 
 
 {% block content %}
-    {% if form.errors %}
-        <p class="errors">Not a valid user or password</p>
-    {% endif %}
+    <div class="container">
 
-    <form action="/accounts/auth/" method="post">{% csrf_token %}
-        <label for="username">User Name:</label>
-        <input type="text" name="username" value="" id="username">
+        {% if form.errors %}
+            <p class="errors">Not a valid user or password</p>
+        {% endif %}
+
         <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="" id="password">
         <br>
+        <div class="offset2 span3">
+            <h1>Login</h1>
+            <form action="/accounts/auth/" method="post">{% csrf_token %}
+                <label for="username" class="col-lg-2 control-label">User Name:</label>
+                <input type="text" name="username" value="" id="username" class="form-control">
+                <br>
+                <label for="password" class="col-lg-2 control-label">Password:</label>
+                <input type="password" class="form-control" name="password" value="" id="password">
+                <br>
 
-        <input type="submit" value="login">
+                <input type="submit" class="btn btn-success" value="login">
 
-    </form>
+            </form>
+        </div>
+
+    </div>
 
 {% endblock %}

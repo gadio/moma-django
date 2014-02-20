@@ -4,39 +4,54 @@
 
 
 {% block content %}
-    {% if message %}
-        <h3>{{ message }}</h3>
-    {% endif %}
-    <a href="/q/edit/">Ask a new question</a>
-    <br>
-    <h2>Q-Summary</h2>
-    <table>
-        <tr>
-            <th>By</th>
-            <th>#</th>
-            <th>?</th>
-            <th>V</th>
-        </tr>
-        {% for question in questions %}
-            <tr>
-                <td>{{ question.user.username }}</td>
-                <td>{{ question.vote_ids|length }}</td>
-                <td>{{ question.question }}</td>
-                <td>
-                    {% if the_user.id in question.vote_ids %}
-                        <a href="/q/un_vote/?q={{ question.id }}">*</a>
-                    {% else %}
-                        {% if the_user.id == question.user.id %}
-                            <a href="/q/edit/?q={{ question.id }}">E</a>
-                        {% else %}
-                            <a href="/q/vote/?q={{ question.id }}">+</a>
-                        {% endif %}
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <a href="/q/edit/">I have a new question</a>
+    <div class="container">
+        {% if message %}
+            <div class="col-lg-4">
+                <div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+{#                    <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.#}
+                    {{ message }}
+                </div>
+            </div>
 
+        {% endif %}
+        <a href="/q/edit/">Ask a new question</a>
+        <br>
+        <h2>Q-Summary</h2>
+        <div class="bs-example table-responsive">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>By</th>
+                        <th>Votes</th>
+                        <th>Question</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for question in questions %}
+                    <tr>
+                        <td>{{ question.user.username }}</td>
+                        <td>{{ question.vote_ids|length }}</td>
+                        <td>{{ question.question }}</td>
+                        <td>
+                            {% if the_user.id in question.vote_ids %}
+                                <a href="/q/un_vote/?q={{ question.id }}">*</a>
+                            {% else %}
+                                {% if the_user.id == question.user.id %}
+                                    <a href="/q/edit/?q={{ question.id }}">E</a>
+                                {% else %}
+                                    <a href="/q/vote/?q={{ question.id }}">+</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <a href="/q/edit/" class="btn btn-warning">I have a new question</a>
+        <a href="/q/home/" class="btn btn-default">Refresh</a>
+    </div>
 {% endblock %}
