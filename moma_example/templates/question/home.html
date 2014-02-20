@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Questions{% endblock %}
+
+
+{% block content %}
+    {% if message %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+    <a href="/q/edit/">Ask a new question</a>
+    <br>
+    <h2>Q-Summary</h2>
+    <table>
+        <tr>
+            <th>By</th>
+            <th>#</th>
+            <th>?</th>
+            <th>V</th>
+        </tr>
+        {% for question in questions %}
+            <tr>
+                <td>{{ question.user.username }}</td>
+                <td>{{ question.vote_ids|length }}</td>
+                <td>{{ question.question }}</td>
+                <td>
+                    {% if the_user.id in question.vote_ids %}
+                        <a href="/q/un_vote/?q={{ question.id }}">*</a>
+                    {% else %}
+                        {% if the_user.id == question.user.id %}
+                            <a href="/q/edit/?q={{ question.id }}">E</a>
+                        {% else %}
+                            <a href="/q/vote/?q={{ question.id }}">+</a>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/q/edit/">I have a new question</a>
+
+{% endblock %}

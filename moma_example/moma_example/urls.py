@@ -14,10 +14,10 @@
 # limitations under the License.
 #==========================================================================
 
+import data
 from django.conf.urls import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -39,4 +39,9 @@ urlpatterns = patterns('',
     url(r'^accounts/invalid/$', 'moma_example.views.invalid_login'),
     url(r'^accounts/register/$', 'moma_example.views.register_user'),
     url(r'^accounts/register_success/$', 'moma_example.views.register_success'),
+
+    url(r'^q/home/$', 'data.views.questions_home'),
+    url(r'^q/home/$', 'data.views.questions_home'),
+    url(r'^q/vote/$', 'data.views.vote'),
+    url(r'^q/un_vote/$', 'data.views.un_vote'),
 )

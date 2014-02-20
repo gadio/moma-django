@@ -17,7 +17,7 @@ from django.contrib.auth.models import User
 
 from django.db import models
 from moma_django import MongoModel, post_syncdb_mongo_handler
-from moma_django.fields import MongoDateTimeField, DictionaryField
+from moma_django.fields import MongoDateTimeField, DictionaryField, ValuesField
 
 
 
@@ -41,9 +41,11 @@ class Question(MongoModel):
     date = MongoDateTimeField(db_index=True)
     question = models.CharField(max_length=256 )
 
-    image = DictionaryField(models.FloatField())
-    audio = DictionaryField(models.IntegerField())
+    image = DictionaryField()
+    audio = DictionaryField()
     other = DictionaryField()
+
+    vote_ids = ValuesField(models.IntegerField())
 
 
     def __unicode__(self):
