@@ -179,3 +179,8 @@ MONGO_HOST = 'localhost'
 MONGO_PORT = 27017
 MONGO_COLLECTION = 'momaexample'
 
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
