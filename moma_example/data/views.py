@@ -88,7 +88,7 @@ def vote(request):
         if user.id in question.vote_ids:
             already_voted += 1
         if already_voted >= 3:
-            return render_to_response('question/home.html', {'questions':questions, 'the_user': request.user, 'message': 'You can only vote %s times!' % allowed_votes})
+            return render_to_response('question/home.html', {'questions':questions, 'the_user': request.user, 'message': 'You can only vote %s times!' % allowed_votes, 'msg_err':True})
 
     question_id = request.GET['q']
     question = Question.objects.get(id=question_id)
