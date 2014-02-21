@@ -43,7 +43,7 @@ urlpatterns = patterns('',
     url(r'^accounts/register_success/$', 'moma_example.views.register_success'),
 
     url(r'^q/home/$', 'data.views.questions_home'),
-    url(r'^q/home/$', 'data.views.questions_home'),
+    url(r'^q/edit/$', 'data.views.questions_edit'),
     url(r'^q/vote/$', 'data.views.vote'),
     url(r'^q/un_vote/$', 'data.views.un_vote'),
 )

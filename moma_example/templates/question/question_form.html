@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap  %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+
+        <br>
+        <div class="offset2 span3">
+            <h1>Edit Question</h1>
+            <form action="/q/edit/" method="post">{% csrf_token %}
+                {{ form }}
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <a href="/q/home/" class="btn btn-default">Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Submit">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
