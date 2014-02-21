@@ -13,31 +13,33 @@
                 <li>
                     <a href="/q/home/">View Questions</a>
                 </li>
-                <li>
-                    <a href="/q/edit/">New Question</a>
-                </li>
-                <li>
-                    <a href="../help/">Help</a>
-                </li>
-                <li>
-                    <a href="http://someblog.someblog.com">Blog</a>
-                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="viewq">View <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="View Questions">
                         <li><a href="/q/home/">All</a></li>
                         <li class="divider"></li>
-                        <li><a href="/q/home/">Ranked</a></li>
-                        <li><a href="/q/home/">My questions</a></li>
+                        <li><a href="/q/home/?sort=rank">Ranked</a></li>
+                        <li><a href="/q/home/?sort=time">By time</a></li>
+                        <li><a href="/q/home/?filter=user">My questions</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="/q/edit/">New Question</a>
+                </li>
+                <li>
+                    <a href="https://github.com/gadio/moma-django" target="_blank">github</a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/gadio/moma-django" target="_blank">github</a></li>
                 {% if the_user.is_authenticated %}
-                    <li>{{ the_user.username }}</li>
-                    <li><a href="/accounts/logout/" >Logout</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user">{{ the_user.username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="{{ the_user.username }}">
+                            <li class="divider"></li>
+                            <li><a href="/accounts/logout/">Logout</a></li>
+                        </ul>
+                    </li>
                 {% else %}
                     <li><a href="/accounts/login/" >Login</a></li>
                 {% endif %}
