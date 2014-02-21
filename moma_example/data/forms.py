@@ -28,3 +28,23 @@ class QuetionEditForm(forms.Form):
         super(forms.Form, self).__init__(*args, **kwargs)
         if hide_condition:
             self.fields['question_id'].widget = HiddenInput()
+
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(required=True,
+        label='Image',
+        help_text='... not too large please ...',
+        widget=forms.FileInput(attrs={'capture':"camera", 'accept':"image/*"}),
+    )
+    question_id = forms.CharField(required=True, label="question id",
+                                  widget = forms.TextInput(
+                                      attrs={'type': 'hidden',}
+                                  ))
+
+    def __init__(self, *args, **kwargs):
+        from django.forms.widgets import HiddenInput
+        hide_condition = kwargs.pop('hide_condition',None)
+        super(forms.Form, self).__init__(*args, **kwargs)
+        if hide_condition:
+            self.fields['question_id'].widget = HiddenInput()
+

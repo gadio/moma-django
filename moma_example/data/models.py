@@ -41,7 +41,8 @@ class Question(MongoModel):
     date = MongoDateTimeField(db_index=True)
     question = models.CharField(max_length=256 )
 
-    image = DictionaryField()
+    docs = DictionaryField(models.CharField())
+    image = DictionaryField(models.TextField())
     audio = DictionaryField()
     other = DictionaryField()
 

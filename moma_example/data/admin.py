@@ -19,7 +19,7 @@ from models import Question
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ['user', 'date', 'question', 'vote_ids']
+    list_display = ['user', 'date', 'question', 'vote_ids', 'image']
     list_filter = ['user', 'date',  ]
 
 

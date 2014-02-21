@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load bootstrap  %}
+
+{% block title %}Question Media{% endblock %}
+
+{% block css %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <style>
+        #yourimage {
+            width:100%;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <br>
+        <div class="offset2 span3">
+            <h1>Edit Question</h1>
+            <!-- List of uploaded documents -->
+            {% if documents %}
+                <ul>
+                    {% for document in documents %}
+                        <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %}
+
+            {% if question %}
+                {% if question.user == the_user %}
+
+                    <!-- Upload form. Note enctype attribute! -->
+                    <form action="{% url list_question_media %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <p>{{ form.non_field_errors }}</p>
+                            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                            <p>
+                                {{ form.docfile.errors }}
+                                {{ form.docfile }}
+                                <div hidden>{{ form.question_id }}</div>
+
+                            </p>
+                            <p><input type="submit" value="Upload" /></p>
+                        </div>
+                    </form>
+                    <img id="yourimage">
+                {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+
+    <script>
+        var desiredWidth;
+
+        $(document).ready(function() {
+            console.log('onReady');
+            $("#id_docfile").on("change",gotPic);
+            desiredWidth = window.innerWidth;
+
+            if(!("url" in window) && ("webkitURL" in window)) {
+                window.URL = window.webkitURL;
+            }
+
+        });
+
+
+        //Credit: https://www.youtube.com/watch?v=EPYnGFEcis4&feature=youtube_gdata_player
+        function gotPic(event) {
+            if(event.target.files.length == 1 &&
+                     event.target.files[0].type.indexOf("image/") == 0) {
+                $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
+            }
+        }
+
+
+
+    </script>
+
+{% endblock %}

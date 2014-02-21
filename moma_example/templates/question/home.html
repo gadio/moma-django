@@ -40,6 +40,7 @@
                                 <a class="btn btn-success" href="/q/vote/?q={{ question.id }}">Vote <span class="badge">+1</span></a>
                             {% endif %}
                         {% endif %}
+                        <a class="btn btn-info" href="/q/media/?q={{ question.id }}">Media <span class="badge">{{ question.docs.keys|length }}</span></a>
                     </ul>
                 </div>
             </div>
