@@ -18,7 +18,11 @@
 
         <br>
         <div class="offset2 span3">
-            <h1>Edit Question</h1>
+            {% if question.user != the_user %}
+                <h1>Review Question Media</h1>
+            {% else %}
+                <h1>Edit Question Media</h1>
+            {% endif %}
             <!-- List of uploaded documents -->
             {% if documents %}
                 <ul>
