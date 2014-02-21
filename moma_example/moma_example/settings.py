@@ -83,7 +83,6 @@ STATIC_ROOT = rel('..', 'static')
 
 STATICFILES_DIRS = (
     rel('static'),
-    rel('..', 'static'),
 )
 
 # URL prefix for static files.
