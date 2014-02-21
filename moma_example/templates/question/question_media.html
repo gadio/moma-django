@@ -31,8 +31,15 @@
             {% endif %}
 
             {% if question %}
-                {% if question.user == the_user %}
+                {% if question.user != the_user %}
+                    <div class="col-lg-4">
+                        <div class="alert alert-dismissable alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ the_user }}, you can review the media for this question (this question was submitted by: {{ question.user }}).
+                        </div>
+                    </div>
 
+                    {% else %}
                     <!-- Upload form. Note enctype attribute! -->
                     <form action="{% url list_question_media %}" method="post" enctype="multipart/form-data">{% csrf_token %}
                         {% csrf_token %}
