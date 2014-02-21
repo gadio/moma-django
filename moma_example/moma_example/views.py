@@ -21,6 +21,13 @@ from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
 
 
+def home(request):
+    if request.user.is_anonymous():
+        return HttpResponseRedirect('/accounts/login/')
+    else:
+        return HttpResponseRedirect('/q/home/')
+
+
 def login(request):
     c= {}
     c.update(csrf(request))
