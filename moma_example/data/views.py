@@ -14,8 +14,10 @@
 # limitations under the License.
 #==========================================================================
 import base64
+from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from django.template import RequestContext
 from django.utils import timezone
 from django.views.generic.simple import direct_to_template
@@ -31,7 +33,22 @@ from django.contrib.auth.decorators import login_required
 def questions_home(request):
     user = request.user
     questions = Question.objects.all()
-    return render_to_response('question/home.html', {'questions':questions, 'the_user': request.user})
+    context = {'questions': questions, 'the_user': request.user}
+    context.update(csrf(request))
+    return render_to_response('question/home.html', context)
+
+
+@login_required
+def questions_search(request):
+    user = request.user
+    if request.method == 'POST':
+        the_user=None
+        if User.objects.filter(username=request.POST['search']).count() == 1:
+            the_user = User.objects.get(username=request.POST['search'])
+        questions = Question.objects.filter(Q(question__iregex=request.POST['search'])|Q(user=the_user)).order_by('date')
+        context = {'questions': questions, 'the_user': request.user}
+        context.update(csrf(request))
+        return render_to_response('question/home.html', context)
 
 @login_required
 def questions_edit(request):
