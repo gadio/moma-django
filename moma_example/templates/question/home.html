@@ -30,7 +30,9 @@
                 <div class="panel-body">
                     {{ question.question }}
                     <ul class="nav nav-pills">
-                        <a class="btn btn-lg" >Votes <span class="badge">{{ question.vote_ids|length }}  </span></a>
+                        {% if question.vote_ids|length > 0 %}
+                            <a class="btn btn-lg" >Votes <span class="badge">{{ question.vote_ids|length }}  </span></a>
+                        {% endif %}
                         {% if the_user.id in question.vote_ids %}
                             <a class="btn btn-warning" href="/q/un_vote/?q={{ question.id }}">Un-Vote <span class="badge">-1</span></a>
                         {% else %}
@@ -40,7 +42,9 @@
                                 <a class="btn btn-success" href="/q/vote/?q={{ question.id }}">Vote <span class="badge">+1</span></a>
                             {% endif %}
                         {% endif %}
-                        <a class="btn btn-info" href="/q/media/?q={{ question.id }}">Media <span class="badge">{{ question.docs.keys|length }}</span></a>
+                        {% if question.docs.keys|length > 0 or question.user == the_user %}
+                            <a class="btn btn-info" href="/q/media/?q={{ question.id }}">Media <span class="badge">{{ question.docs.keys|length }}</span></a>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
