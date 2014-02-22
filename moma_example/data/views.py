@@ -14,6 +14,7 @@
 # limitations under the License.
 #==========================================================================
 import base64
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.utils import timezone
@@ -134,12 +135,31 @@ def list_question_media(request):
     context.update(csrf(request))
     context.update({'the_user': request.user})
 
-    # Render list page with the documents and the form
-    # return render_to_response('question/question_media.html', context,
-    #                           context_instance=RequestContext(request)
-    # )
     return direct_to_template(request, 'question/question_media.html', context)
 
+
+@login_required
+def review_question_media(request):
+    question_id = request.GET['q']
+    question = Question.objects.get(id=question_id)
+
+    documents = {}
+    for docname in question.docs.keys():
+        file_data = question.image[docname+'_data']
+        file_name = question.image[docname+'_name']
+        file_decoded_data = base64.b64decode(file_data)
+        f = file(settings.STATIC_ROOT+'/display/'+file_name, 'w')
+        f.write(file_decoded_data)
+        f.close()
+        documents.update({file_name:'/static/display/'+file_name})
+
+    context = {}
+    context.update( {'documents': documents, })
+    context.update(csrf(request))
+    context.update({'the_user': request.user})
+    context.update({'question': question})
+
+    return direct_to_template(request, 'question/review_question_media.html', context)
 
 
 @login_required

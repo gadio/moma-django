@@ -42,4 +42,5 @@ urlpatterns = patterns('',
     url(r'^q/vote/$', 'data.views.vote'),
     url(r'^q/un_vote/$', 'data.views.un_vote'),
     url(r'^q/media/$', 'data.views.list_question_media', name='list_question_media'),
+    url(r'^q/review/$', 'data.views.review_question_media', name='review_question_media'),
 )

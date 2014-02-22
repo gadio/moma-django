@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Review Question Media{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h2>Review Question Media</h2>
+        <br>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">By:{{ question.user.username }}
+                </h3>
+            </div>
+            <div class="panel-body">
+                {{ question.question }}
+                <ul class="nav nav-pills">
+                    {% if question.vote_ids|length > 0 %}
+                        <a class="btn btn-lg" >Votes <span class="badge">{{ question.vote_ids|length }}  </span></a>
+                    {% endif %}
+                    {% if the_user.id in question.vote_ids %}
+                        <a class="btn btn-warning" href="/q/un_vote/?q={{ question.id }}">Un-Vote <span class="badge">-1</span></a>
+                    {% else %}
+                        {% if the_user.id == question.user.id %}
+                            <a class="btn btn-danger" href="/q/edit/?q={{ question.id }}">Edit</a>
+                        {% else %}
+                            <a class="btn btn-success" href="/q/vote/?q={{ question.id }}">Vote <span class="badge">+1</span></a>
+                        {% endif %}
+                    {% endif %}
+                    {% if question.docs.keys|length > 0 or question.user == the_user %}
+                        <a class="btn btn-info" href="/q/media/?q={{ question.id }}">Media <span class="badge">{{ question.docs.keys|length }}</span></a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <h3>Review Question Media</h3>
+        {% for doc_name, doc_url in documents.iteritems %}
+            {{ doc_name }}
+            <img src="{{ doc_url }}" alt="{{ doc_name }}">
+        {% endfor %}
+        <br>
+        <a href="/q/home/" class="btn btn-default">Back</a>
+    </div>
+{% endblock %}
