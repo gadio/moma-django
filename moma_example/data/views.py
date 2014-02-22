@@ -97,7 +97,7 @@ def list_question_media(request):
             docfile_name = docfile.name
             docfile_name_changed = docfile_name.replace('.','~^~')
             question.docs.update({docfile_name_changed:docfile.content_type})
-            question.image.update({docfile_name_changed +'_url':'Bla', docfile_name_changed +'_name': docfile_name, docfile_name_changed +'_content_type':docfile.content_type})
+            question.image.update({docfile_name_changed +'_url':'/static/display/s_'+docfile_name, docfile_name_changed +'_name': docfile_name, docfile_name_changed +'_content_type':docfile.content_type})
             file_read = docfile.file.read()
             file_data = base64.b64encode(file_read)
             question.image.update({docfile_name_changed +'_data': file_data})
@@ -125,7 +125,14 @@ def list_question_media(request):
             question_id = request.GET['q']
             form = DocumentForm({ 'question_id':question_id,}, hide_condition=True)
             question = Question.objects.get(id=question_id)
-            documents = [{'docfile':{'url':question.image[k +'_url'], 'name':question.image[k+'_name']}} for k in question.docs]
+            documents = []
+            for docname in question.docs:
+                file_data = question.image[docname+'_data']
+                file_name = question.image[docname+'_name']
+                orig_fname = settings.STATIC_ROOT + '/display/' + file_name
+                new_fname = settings.STATIC_ROOT + '/display/tn_' + file_name
+                _decode_image_to_size(file_data, orig_fname, new_fname, basewidth=128)
+                documents.append({'docfile':{'url':question.image[docname +'_url'], 'name':question.image[docname+'_name'], 'thumb':'/static/display/tn_'+question.image[docname+'_name']}})
             context.update({'q': question_id, 'question':question})
 
     # Load documents for the list page
@@ -138,6 +145,32 @@ def list_question_media(request):
     return direct_to_template(request, 'question/question_media.html', context)
 
 
+def _change_image_size(fname_in, fname_out, basewidth=300):
+    import PIL
+    from PIL import Image
+
+    img = Image.open(fname_in)
+    # original_size = img,size[0]
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((basewidth,hsize), PIL.Image.ANTIALIAS)
+    img.save(fname_out)
+    new_size = img.size
+
+    # return {'original_size':original_size, 'new_size':new_size, 'percent':wpercent}
+
+
+def _decode_image_to_size(file_data, orig_fname, new_fname, basewidth):
+    import os
+    if os.path.exists(new_fname):
+        return
+    file_decoded_data = base64.b64decode(file_data)
+    f = file(orig_fname, 'w')
+    f.write(file_decoded_data)
+    f.close()
+    _change_image_size(orig_fname, new_fname, basewidth=basewidth)
+
+
 @login_required
 def review_question_media(request):
     question_id = request.GET['q']
@@ -147,11 +180,10 @@ def review_question_media(request):
     for docname in question.docs.keys():
         file_data = question.image[docname+'_data']
         file_name = question.image[docname+'_name']
-        file_decoded_data = base64.b64decode(file_data)
-        f = file(settings.STATIC_ROOT+'/display/'+file_name, 'w')
-        f.write(file_decoded_data)
-        f.close()
-        documents.update({file_name:'/static/display/'+file_name})
+        orig_fname = settings.STATIC_ROOT + '/display/' + file_name
+        new_fname = settings.STATIC_ROOT + '/display/s_' + file_name
+        _decode_image_to_size(file_data, orig_fname, new_fname, basewidth=300)
+        documents.update({file_name:'/static/display/s_'+file_name})
 
     context = {}
     context.update( {'documents': documents, })
