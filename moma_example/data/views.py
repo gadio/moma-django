@@ -70,14 +70,13 @@ def questions_edit(request):
                     question = txt
                 )
                 nq.save()
-                questions = Question.objects.all()
-                return render_to_response('question/home.html', {'questions':questions, 'the_user': request.user, 'message': 'Quetion added!' })
+                return HttpResponseRedirect('/q/media/?q=%s'% nq.id)
             else:
                 question = Question.objects.get(id=question_id)
                 question.question = txt
                 question.save()
                 questions = Question.objects.all()
-                return render_to_response('question/home.html', {'questions':questions, 'the_user': request.user, 'message': 'Quetion updated!' })
+                return HttpResponseRedirect('/q/media/?q=%s'% question.id)
         else:
             args = {}
             args.update(csrf(request))

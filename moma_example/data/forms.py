@@ -32,8 +32,8 @@ class QuetionEditForm(forms.Form):
 
 class DocumentForm(forms.Form):
     docfile = forms.FileField(required=True,
-        label='Image',
-        help_text='... not too large please ...',
+        label='Upload an Image',
+        help_text='Note: on a device with a camera, pressing "Choose File" would allow taking a picture. Other devices would enable image selection (not too large please...)',
         widget=forms.FileInput(attrs={'capture':"camera", 'accept':"image/*"}),
     )
     question_id = forms.CharField(required=True, label="question id",
