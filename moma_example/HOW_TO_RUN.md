@@ -37,14 +37,18 @@ Example application
    review questions
 
 login:
+
 ![login](http://i.imgur.com/O4A2pZ2.png)
 
 Review questions:
+
 ![review questions](http://i.imgur.com/qz1MIFM.png)
 
 Edit your question, vote and un-vote:
+
 ![edit your question, vote and un-vote](http://i.imgur.com/dW2Ygqo.png)
 
 Review and edit question media:
+
 ![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
 
