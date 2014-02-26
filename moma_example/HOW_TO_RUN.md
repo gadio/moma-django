@@ -16,17 +16,17 @@ In order to run the example, please follow the next steps:
 
 Run tests
 -----------
-1. `./manage.py test testing`
-1. Once the tests pass, you can validate that certain collections were created within mongodb. Use mongo console:
-   * `show dbs;`
-1. To validate that "test_momaexample" was created. Use that db:
-   * `use test_momaexample;`
+1. In a terminal under moma_example, run `./manage.py test testing`
+1. Once the tests pass, you can validate that certain collections were created within mongodb.
+   * Use mongo console and run `show dbs;`
+1. To validate that "test_momaexample" was created.
+   * Use that db: `use test_momaexample;`
 1. Validate that there are certain collections:
    * `show collections;`
    * This would produce testing_testmodel1, testing_testmodel2, testing_testmodel2, test_uniquevisit.
 1. Check the content using the following to get a single record of a visitor from South Africa:
    * `db.testing_uniquevisit.find({"location.cr":"South Africa"})`
-1. To get to visitors from New York city:
+1. To find visitors from New York city:
    * `db.testing_uniquevisit.find({"location.ct":"New York"})`
 
 Example application
@@ -35,4 +35,9 @@ Example application
    * `./manage.py runserver 8000`
 1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
    review questions
+
+![login](http://i.imgur.com/O4A2pZ2.png)
+![review question](http://i.imgur.com/qz1MIFM.png)
+![edit your question, vote and un-vote](http://i.imgur.com/dW2Ygqo.png)
+![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
 
