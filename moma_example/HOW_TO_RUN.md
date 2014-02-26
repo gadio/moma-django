@@ -1,19 +1,8 @@
-#==========================================================================
-# Copyright 2012 Lucidel, Inc., 2013 Cloudoscope Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this work except in compliance with the License.
-# You may obtain a copy of the License in the LICENSE file, or at:
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#==========================================================================
+How to run
+==========
 
+Cloning
+-------
 In order to run the example, please follow the next steps
 1. Clone the repository
 2. within the installation tree create a soft link from directory moma_django into moma_example/moma_django
@@ -25,7 +14,7 @@ In order to run the example, please follow the next steps
    Define an admin user in the process of the database creation
 
 Run testing
-
+-----------
 5. Run tests:
    ./manage.py test testing
    Once the tests pass, you can validate that certain collections were created within mongodb. Use mongo console:
@@ -39,6 +28,8 @@ Run testing
    to get a single record of a visitor from South Africa, or visitor from New York city:
    db.testing_uniquevisit.find({"location.ct":"New York"})
 
+Example application
+-------------------
 6. Run the example:
    ./manage.py runserver 8000
    Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
