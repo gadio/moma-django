@@ -12,8 +12,7 @@ all question related info, including the text, the list of users that voted for 
 
 The `data.models.Question` model looks like this:
 
-`
-
+```python
 class Question(MongoModel):
     user = models.ForeignKey(User)
     date = MongoDateTimeField(db_index=True)
@@ -28,8 +27,7 @@ class Question(MongoModel):
     class Meta:
         unique_together = ['user', 'question',]
         managed = False
-
-`
+```
 
 Note the following:
 * The class inherits from `MongoModel`, but otherwise looks very standard.
