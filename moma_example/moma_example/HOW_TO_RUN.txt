@@ -39,4 +39,8 @@ Run testing
    to get a single record of a visitor from South Africa, or visitor from New York city:
    db.testing_uniquevisit.find({"location.ct":"New York"})
 
+6. Run the example:
+   ./manage.py runserver 8000
+   Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
+   review questions
 
