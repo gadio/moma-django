@@ -17,21 +17,22 @@ In order to run the example, please follow the next steps:
 Run tests
 -----------
 1. `./manage.py test testing`
-2. Once the tests pass, you can validate that certain collections were created within mongodb. Use mongo console:
+1. Once the tests pass, you can validate that certain collections were created within mongodb. Use mongo console:
    * `show dbs;`
-3. To validate that "test_momaexample" was created. Use that db:
+1. To validate that "test_momaexample" was created. Use that db:
    * `use test_momaexample;`
-4. and validate that there are certain collections:
-4. show collections;
-   This would produce testing_testmodel1, testing_testmodel2, testing_testmodel2, test_uniquevisit. Check the content using:
-   db.testing_uniquevisit.find({"location.cr":"South Africa"})
-   to get a single record of a visitor from South Africa, or visitor from New York city:
-   db.testing_uniquevisit.find({"location.ct":"New York"})
+1. Validate that there are certain collections:
+   * `show collections;`
+   * This would produce testing_testmodel1, testing_testmodel2, testing_testmodel2, test_uniquevisit.
+1. Check the content using the following to get a single record of a visitor from South Africa:
+   * `db.testing_uniquevisit.find({"location.cr":"South Africa"})`
+1. To get to visitors from New York city:
+   * `db.testing_uniquevisit.find({"location.ct":"New York"})`
 
 Example application
 -------------------
-6. Run the example:
-   ./manage.py runserver 8000
-   Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
+1. In order to run the example:
+   * `./manage.py runserver 8000`
+1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
    review questions
 
