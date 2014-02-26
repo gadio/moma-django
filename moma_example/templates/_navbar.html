@@ -21,14 +21,14 @@
                         <li><a href="/q/home/?sort=rank">Ranked</a></li>
                         <li><a href="/q/home/?sort=time">By time</a></li>
                         <li><a href="/q/home/?filter=user">My questions</a></li>
+                        <form class="navbar-form navbar-left" action="/q/search/" method="post">{% csrf_token %}
+                            <input type="text" class="form-control col-lg-8" placeholder="Search" id="search" name="search">
+                        </form>
                     </ul>
                 </li>
                 <li>
                     <a href="/q/edit/">New Question</a>
                 </li>
-                <form class="navbar-form navbar-left" action="/q/search/" method="post">{% csrf_token %}
-                    <input type="text" class="form-control col-lg-8" placeholder="Search" id="search" name="search">
-                </form>
                 <li>
                     <a href="https://github.com/gadio/moma-django" target="_blank">github</a>
                 </li>
