@@ -95,7 +95,6 @@ class UniqueVisit(MongoModel):
         unique_together = ['account', 'date', 'visit_count', 'visit_id']
         managed = False
 
-models.signals.post_syncdb.connect(post_syncdb_mongo_handler)
 
 
 #---------------------------------------
@@ -140,6 +139,22 @@ class TestModel3(MongoModel):
     class Meta:
         unique_together = ['start_date', 'some_id', ]
         managed = False
+
+
+class TstBook(MongoModel):
+    name = models.CharField(max_length=64)
+    publish_date = MongoDateTimeField()
+    author = models.ForeignKey('testing.TstAuthor')
+
+
+class TstAuthor(MongoModel):
+    first_name = models.CharField(max_length=32)
+    last_name = models.CharField(max_length=32)
+
+
+
+
+models.signals.post_syncdb.connect(post_syncdb_mongo_handler)
 
 # End: TEST MODELS
 #---------------------------------------

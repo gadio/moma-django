@@ -15,7 +15,7 @@
 #==========================================================================
 
 from django.contrib import admin
-from models import UniqueVisit, TestModel1, TestModel2, TestModel3, AnalyticsAccount, Profile
+from models import UniqueVisit, TestModel1, TestModel2, TestModel3, AnalyticsAccount, Profile, TstAuthor, TstBook
 
 
 class UniqueVisitAdmin(admin.ModelAdmin):
@@ -40,9 +40,21 @@ class AnalyticsAccountAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ['username', 'first_name', 'last_name', 'company_name' ]
 
+class TstAuthorAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name',  ]
+
+class TstBookAdmin(admin.ModelAdmin):
+    list_display = ['name', 'author_info', 'publish_date',  ]
+
+    def author_info(self, obj):
+        mobj = TstAuthor.objects.get(id=obj.author_id)
+        return mobj.last_name + ', ' + mobj.first_name
+
 admin.site.register(UniqueVisit, UniqueVisitAdmin)
 admin.site.register(TestModel1, TestModel1Admin)
 admin.site.register(TestModel2, TestModel2Admin)
 admin.site.register(TestModel3, TestModel3Admin)
 admin.site.register(AnalyticsAccount, AnalyticsAccountAdmin)
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(TstAuthor, TstAuthorAdmin)
+admin.site.register(TstBook, TstBookAdmin)
