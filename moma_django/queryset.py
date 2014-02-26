@@ -206,6 +206,23 @@ class MongoQuerySet(object):
     def reindex(self):
         return self.query.collection.reindex()
 
+    def complex_filter(self, filter_obj):
+        """
+        Returns a new QuerySet instance with filter_obj added to the filters.
+
+        filter_obj can be a Q object (or anything with an add_to_query()
+        method) or a dictionary of keyword lookup arguments.
+
+        This exists to support framework features such as 'limit_choices_to',
+        and usually it will be more natural to use other methods.
+        """
+        if isinstance(filter_obj, Q) or hasattr(filter_obj, 'add_to_query'):
+            clone = self._clone()
+            clone.query.add_q(filter_obj)
+            return clone
+        else:
+            return self._filter_or_exclude(None, **filter_obj)
+
     def _update(self, values):
         assert self.query.can_filter(), \
                 "Cannot update a query once a slice has been taken."        
