@@ -1,3 +1,65 @@
+Example application
+===================
+About the application - moma_example
+------------------------------------
+The example application was developed (in part) to serve as a way for people participating in a lecture or a presentation to feed in questions
+or vote on other people's questions. In addition a user the created a question can add any number of media files (currently
+images, but it is very simple to extend this to voice, video or just arbitrary files). The application was designed to run
+well on a smart phone and should allow taking pictures directly from the phone and uploading them.
+
+The application is mostly a django application where the main model `data.models.Question` is a MongoModel. The question keeps
+all question related info, including the text, the list of users that voted for it and the actual media files.
+
+The `data.models.Question` model looks like this:
+`
+class Question(MongoModel):
+    user = models.ForeignKey(User)
+    date = MongoDateTimeField(db_index=True)
+    question = models.CharField(max_length=256 )
+
+    docs = DictionaryField(models.CharField())
+    image = DictionaryField(models.TextField())
+    audio = DictionaryField()
+    other = DictionaryField()
+
+    vote_ids = ValuesField(models.IntegerField())
+
+
+    def __unicode__(self):
+        return u'%s[%s %s]' % (self.question, self.date, self.user, )
+
+    class Meta:
+        unique_together = ['user', 'question',]
+        managed = False
+`
+
+Screenshots
+-----------
+
+login:
+
+![login](http://i.imgur.com/O4A2pZ2.png)
+
+Review questions:
+
+![review questions](http://i.imgur.com/qz1MIFM.png)
+
+Edit your question, vote and un-vote:
+
+![edit your question, vote and un-vote](http://i.imgur.com/dW2Ygqo.png)
+
+Review and edit question media:
+
+![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
+
+
+1. In order to run the example:
+   * `./manage.py runserver 8000`
+1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
+   review questions
+
+
+
 How to run
 ==========
 
@@ -28,27 +90,4 @@ Run tests
    * `db.testing_uniquevisit.find({"location.cr":"South Africa"})`
 1. To find visitors from New York city:
    * `db.testing_uniquevisit.find({"location.ct":"New York"})`
-
-Example application
--------------------
-1. In order to run the example:
-   * `./manage.py runserver 8000`
-1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
-   review questions
-
-login:
-
-![login](http://i.imgur.com/O4A2pZ2.png)
-
-Review questions:
-
-![review questions](http://i.imgur.com/qz1MIFM.png)
-
-Edit your question, vote and un-vote:
-
-![edit your question, vote and un-vote](http://i.imgur.com/dW2Ygqo.png)
-
-Review and edit question media:
-
-![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
 
