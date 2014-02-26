@@ -17,21 +17,22 @@ The `data.models.Question` model looks like this:
     user = models.ForeignKey(User)
     date = MongoDateTimeField(db_index=True)
     question = models.CharField(max_length=256 )
-
     docs = DictionaryField(models.CharField())
     image = DictionaryField(models.TextField())
     audio = DictionaryField()
     other = DictionaryField()
-
     vote_ids = ValuesField(models.IntegerField())
-
     def __unicode__(self):
         return u'%s[%s %s]' % (self.question, self.date, self.user, )
-
     class Meta:
         unique_together = ['user', 'question',]
         managed = False
 `
+
+Note the following:
+* The class inherits from `MongoModel`, but otherwise looks very standard.
+* New type of fields `DictionaryField` and `ValuesField` that holds some of the payload.
+
 
 Using the application
 ---------------------
@@ -53,6 +54,16 @@ The application is simple and self explanatory. It offers a few basic operations
 
  ![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
 
+The django admin
+----------------
+You would note that the django admin is working for view on top of the Question MongoModel:
+
+ ![admin1](http://i.imgur.com/YC6M3ni.png)
+
+ ![admin2](http://i.imgur.com/UPWpH7f.png)
+
+Note however, that currently editing questions in the admin interface is not working as a result of missing forms (please
+see the top readme file about contributing...)
 
 
 How to run
