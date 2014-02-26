@@ -11,8 +11,9 @@ The application is mostly a django application where the main model `data.models
 all question related info, including the text, the list of users that voted for it and the actual media files.
 
 The `data.models.Question` model looks like this:
-`
-class Question(MongoModel):
+
+
+`class Question(MongoModel):
     user = models.ForeignKey(User)
     date = MongoDateTimeField(db_index=True)
     question = models.CharField(max_length=256 )
@@ -24,7 +25,6 @@ class Question(MongoModel):
 
     vote_ids = ValuesField(models.IntegerField())
 
-
     def __unicode__(self):
         return u'%s[%s %s]' % (self.question, self.date, self.user, )
 
@@ -33,30 +33,25 @@ class Question(MongoModel):
         managed = False
 `
 
-Screenshots
------------
+Using the application
+---------------------
+The application is simple and self explanatory. It offers a few basic operations:
 
-login:
+1. login:
 
-![login](http://i.imgur.com/O4A2pZ2.png)
+ ![login](http://i.imgur.com/O4A2pZ2.png)
 
-Review questions:
+1. Review questions:
 
-![review questions](http://i.imgur.com/qz1MIFM.png)
+ ![review questions](http://i.imgur.com/qz1MIFM.png)
 
-Edit your question, vote and un-vote:
+1. Edit your question, vote and un-vote:
 
-![edit your question, vote and un-vote](http://i.imgur.com/dW2Ygqo.png)
+ ![edit your question, vote and un-vote](http://i.imgur.com/dW2Ygqo.png)
 
-Review and edit question media:
+1. Review and edit question media:
 
-![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
-
-
-1. In order to run the example:
-   * `./manage.py runserver 8000`
-1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
-   review questions
+ ![review and edit question media](http://i.imgur.com/cBuv0Z5.png)
 
 
 
@@ -90,4 +85,11 @@ Run tests
    * `db.testing_uniquevisit.find({"location.cr":"South Africa"})`
 1. To find visitors from New York city:
    * `db.testing_uniquevisit.find({"location.ct":"New York"})`
+
+Run the example
+-----------
+1. After cloning, in order to run the example:
+   * `./manage.py runserver 8000`
+1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
+   review questions
 
