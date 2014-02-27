@@ -32,7 +32,14 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def questions_home(request):
     user = request.user
-    questions = Question.objects.all()
+    q_qs = Question.objects.all()
+    if 'filter' in request.GET and request.GET['filter'] == 'user':
+        q_qs = q_qs.filter(user=user)
+    if 'sort' in request.GET and request.GET['sort'] == 'time':
+        questions = [(q.date, q) for q in q_qs]
+    else:
+        questions = [((-len(q.vote_ids), q.date), q) for q in q_qs]
+    questions = map(lambda x: x[1], sorted(questions))
     context = {'questions': questions, 'the_user': request.user}
     context.update(csrf(request))
     return render_to_response('question/home.html', context)

@@ -146,6 +146,13 @@ class TstBook(MongoModel):
     publish_date = MongoDateTimeField()
     author = models.ForeignKey('testing.TstAuthor')
 
+    class Meta:
+        unique_together = ['name', 'author', ]
+
+    def __unicode__(self):
+        au = TstAuthor.objects.get(id=self.author_id)
+        return u'Book %s, by %s %s' % (self.name, au.first_name, au.last_name,)
+
 
 class TstAuthor(MongoModel):
     first_name = models.CharField(max_length=32)
