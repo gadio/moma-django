@@ -250,3 +250,9 @@ def un_vote(request):
     return render_to_response('question/home.html', {'questions':Question.objects.all(), 'the_user': request.user, 'message': 'Un-voted!!' })
 
 
+@login_required
+def about(request):
+    user = request.user
+    context = {'the_user': request.user}
+    context.update(csrf(request))
+    return render_to_response('about.html', context)

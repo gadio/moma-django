@@ -37,6 +37,8 @@ urlpatterns = patterns('',
     url(r'^accounts/register/$', 'moma_example.views.register_user', name='register'),
     url(r'^accounts/register_success/$', 'moma_example.views.register_success'),
 
+    url(r'^about/$', 'data.views.about', name='about'),
+
     url(r'^q/home/$', 'data.views.questions_home', name='questions_home'),
     url(r'^q/edit/$', 'data.views.questions_edit'),
     url(r'^q/vote/$', 'data.views.vote'),
