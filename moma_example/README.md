@@ -104,3 +104,12 @@ Run the example
 1. Once connected to http://localhost:8000/ you can register, login add questions with media, vote for questions and
    review questions
 
+More information
+================
+Presentation
+------------
+http://www.slideshare.net/GadiOren/moma-django-overviewshare
+
+Video
+-----
+http://youtu.be/cxQKTDLjb-w
