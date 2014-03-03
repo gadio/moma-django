@@ -95,6 +95,11 @@ Developers
 How to test: Please read [Example application README](https://github.com/gadio/moma-django/tree/master/moma_example/README.md) about running the unit tests.
 
 
+More information
+----------------
+Watch the [presentation] (http://www.slideshare.net/GadiOren/moma-django-overviewshare)
+and the [video] (http://youtu.be/cxQKTDLjb-w)
+
 
 Contributing
 ------------
