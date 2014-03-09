@@ -16,7 +16,7 @@
 from django.contrib.auth.models import User
 
 from django.db import models
-from moma_django import MongoModel, post_syncdb_mongo_handler
+from moma_django.models import MongoModel, post_syncdb_mongo_handler
 from moma_django.fields import MongoDateTimeField, DictionaryField, ValuesField
 
 

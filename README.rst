@@ -1,9 +1,10 @@
+===============================
 MoMa-Django, a mongo manager for django.
 ===============================
 
 .. image:: https://badge.fury.io/py/moma-django.png
     :target: http://badge.fury.io/py/moma-django
-
+    
 .. image:: https://travis-ci.org/gadio/moma-django.png?branch=master
         :target: https://travis-ci.org/gadio/moma-django
 
@@ -13,16 +14,12 @@ MoMa-Django, a mongo manager for django.
 
 MoMa-Django provides native Django ORM and admin support for Mongo DB.
 
+* License: GPL license
 * Documentation: http://moma-django.rtfd.org.
-
-
-MoMa-Django is a Mongo Manager for Django. **It provides native Django ORM support for Mongo DB**.
-
-MoMa-Django provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework allowing an application to have models both on SQL database *and* on Mongo, and a quick experimentation / migration path from SQL only to a mixed model. Created and maintained by [Gadi Oren](http://twitter.com/gadioren), as a part of the [Lucidel](http://lucidel.com) and [Cloudoscope](http://cloudoscope.com) products.
-
 
 Features
 --------
+
 * Adoption: changing a model to reside on MongoDB is as simple as changing the inheritance from django.db.models.Model to MongoModel!
 * Model features: large subset of the model capabilities is supported (e.g. unique together)
 * Enhanced model: Mongo models can include lists and dictionaries as a field
