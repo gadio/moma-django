@@ -10,10 +10,8 @@ try:
 except ImportError:
     from distutils.core import setup, find_packages
 
-import moma_django
 
-
-version = moma_django.__version__
+version = '0.1.0'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')

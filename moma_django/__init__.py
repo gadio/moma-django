@@ -21,5 +21,4 @@ __author__ = 'Gadi Oren'
 __email__ = 'gadi.oren.1@gmail.com'
 __version__ = '0.1.0'
 
-
 from .models import MongoModel, post_syncdb_mongo_handler
