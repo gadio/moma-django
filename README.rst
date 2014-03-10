@@ -1,5 +1,5 @@
 ===============================
-MoMa-Django, a mongo manager for django.
+moma-django, a mongo manager for django.
 ===============================
 
 .. image:: https://badge.fury.io/py/moma-django.png
@@ -12,13 +12,18 @@ MoMa-Django, a mongo manager for django.
         :target: https://crate.io/packages/moma-django?version=latest
 
 
-MoMa-Django provides native Django ORM and admin support for Mongo DB.
+About
+=====
+
+moma-django is a Mongo Manager for Django. **It provides native Django ORM support for Mongo DB**.
+
+moma-django provides a framework to bridge between a SQL DB and the NonSQL MongoDB using a simple and powerful framework allowing an application to have models both on SQL database *and* on Mongo, and a quick experimentation / migration path from SQL only to a mixed model. Created and maintained by [Gadi Oren](http://twitter.com/gadioren), as a part of the [Lucidel](http://lucidel.com) and [Cloudoscope](http://cloudoscope.com) products.
 
 * License: GPL license
 * Documentation: http://moma-django.rtfd.org.
 
 Features
---------
+========
 
 * Adoption: changing a model to reside on MongoDB is as simple as changing the inheritance from django.db.models.Model to MongoModel!
 * Model features: large subset of the model capabilities is supported (e.g. unique together)
@@ -33,7 +38,7 @@ Features
 
 
 Why?
-----
+====
 There are other packages out there that create tight integration between MongoDB and django. **Why use this one?**
 This package was originally created as a part of very careful experimentation with MongoDB, and developed in small increments. The reason was
 that we couldn't afford a radical change like replacing the entire Django or moving completely to a NoSQL type of environment.
@@ -41,15 +46,45 @@ This package allowed us to enjoy both worlds without massive impact on the proje
 If that is the type of decision and constraints that you are facing, this package may be a good option.
 
 
+Installation
+============
+
+
+Get MongoDB::
+
+    Download the right version per http://www.mongodb.org/downloads
+
+Get pymongo:
+
+    pip install pymongo=>2.1.1
+
+Get the code::
+
+    pip install moma-django==0.1.0
+
+Install the dependency in your settings.py::
+
+    INSTALLED_APPS = (
+    ...
+    'moma_django',
+    ...
+    )
+
+Documentation
+==============
+
+All the documentation for this project is hosted at http://moma-django.readthedocs.org.
+
+
 Dependencies
-------------
+============
 * Django 1.4.1
 * PyMongo 2.1.1
 * djangotoolbox 0.9.2
 
 
 Quick start
------------
+===========
 
 * Clone the repo, `git clone git://github.com/gadio/moma-django.git`, [download the latest release](https://github.com/).
 * Please read [Example application README](https://github.com/gadio/moma-django/tree/master/moma_example/README.md) about running the example application.
