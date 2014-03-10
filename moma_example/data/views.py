@@ -152,8 +152,8 @@ def list_question_media(request):
             for docname in question.docs:
                 file_data = question.image[docname+'_data']
                 file_name = question.image[docname+'_name']
-                orig_fname = settings.STATIC_ROOT + '/display/' + file_name
-                new_fname = settings.STATIC_ROOT + '/display/tn_' + file_name
+                orig_fname = settings.STATIC_ROOT + '/../moma_example/static/display/' + file_name
+                new_fname = settings.STATIC_ROOT + '/../moma_example/static/display/tn_' + file_name
                 _decode_image_to_size(file_data, orig_fname, new_fname, basewidth=128)
                 documents.append({'docfile':{'url':question.image[docname +'_url'], 'name':question.image[docname+'_name'], 'thumb':'/static/display/tn_'+question.image[docname+'_name']}})
             context.update({'q': question_id, 'question':question})
@@ -203,8 +203,8 @@ def review_question_media(request):
     for docname in question.docs.keys():
         file_data = question.image[docname+'_data']
         file_name = question.image[docname+'_name']
-        orig_fname = settings.STATIC_ROOT + '/display/' + file_name
-        new_fname = settings.STATIC_ROOT + '/display/s_' + file_name
+        orig_fname = settings.STATIC_ROOT + '/../moma_example/static/display/' + file_name
+        new_fname = settings.STATIC_ROOT + '/../moma_example/static/display/s_' + file_name
         _decode_image_to_size(file_data, orig_fname, new_fname, basewidth=300)
         documents.update({file_name:'/static/display/s_'+file_name})
 

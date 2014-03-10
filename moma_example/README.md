@@ -79,9 +79,15 @@ This is the "simple option"
 4. Create the database:
    * python ./manage.py syncdb
    * Define an admin user in the process of the database creation
-5. Run the server:
+5. Prepare the package.
+   * cd <my_tmp_dir>/moma_example
+   * mkdir moma_example/static
+   * mkdir moma_example/static/display
+   * python manage.py collectstatic
+   * pip install PIL --allow-external PIL --allow-unverified PIL
+6. Run the server:
    * python ./manage.py runserver 8000
-6. Use a web browser and point it to http://localhost:8000 to use the application
+7. Use a web browser and point it to http://localhost:8000 to use the application
 
 
 Option 2 - Cloning
