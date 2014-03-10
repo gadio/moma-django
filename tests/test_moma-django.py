@@ -21,6 +21,8 @@ MOMA_EXAMPLE_ROOT = os.path.join(PROJECT_ROOT, 'moma_example')
 sys.path.append(PROJECT_ROOT)
 sys.path.append(MOMA_EXAMPLE_ROOT) #we are using settings.py from the example
 
+sys.path.insert(0, MOMA_EXAMPLE_ROOT)
+
 #Ensure Django is configured to use our example site
 os.environ['DJANGO_SETTINGS_MODULE'] = 'moma_example.settings'
 
