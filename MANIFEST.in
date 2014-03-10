@@ -4,3 +4,7 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 recursive-include docs *
+recursive-include moma_example *.html
+recursive-include moma_example/media *.css
+recursive-include moma_example/media/bootstrap/fonts *.*
+recursive-include moma_example/media *.js

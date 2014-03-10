@@ -32,13 +32,22 @@ setup(
     author_email='gadi.oren.1@gmail.com',
     url='https://github.com/gadio/moma-django',
     packages=[
-        'moma_django', 'moma_example',
+        'moma_django', 'moma_django.management.commands',
+        'moma_example', 'moma_example.moma_example', 'moma_example.testing', 'moma_example.data',
+        'moma_example.bootstrapform', 'moma_example.bootstrapform.templatetags',
     ],
     package_dir={'moma_django': 'moma_django', 'moma_example': 'moma_example'},
     include_package_data=True,
     install_requires=[
-       'pymongo>=2.1.1', 'django==1.4.1', 'djangotoolbox>=0.9.2'
+       'pymongo>=2.1.1', 'django>=1.4, <1.5', 'djangotoolbox>=1.4.0',
     ],
+    package_data={'moma_example':
+                        [
+                          'moma_example/media/bootstrap/css/*.css', 'media/bootstrap/css/*.map',
+                          'media/bootstrap/fonts/*.*', 'media/bootstrap/js/*.js',
+                          'templates/*.html', 'moma_example/templates/question/*.html',
+                        ],
+                  },
     license="GPL",
     zip_safe=False,
     keywords='moma-django,mongodb,django',
