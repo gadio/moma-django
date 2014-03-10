@@ -7,3 +7,8 @@ History
 ++++++++++++++++++
 
 * First release on PyPI.
+
+0.1.1 (2014-03-10)
+++++++++++++++++++
+
+* Minor bugfixes in the example application: incorrect reference to static files location.

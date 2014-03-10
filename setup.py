@@ -11,7 +11,7 @@ except ImportError:
     from distutils.core import setup, find_packages
 
 
-version = '0.1.0'
+version = '0.1.1'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -25,7 +25,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='moma-django',
-    version='0.1.0',
+    version='0.1.1',
     description='MoMa-Django provides native Django ORM and admin support for Mongo DB.',
     long_description=readme + '\n\n' + history,
     author='Gadi Oren',
