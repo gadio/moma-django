@@ -75,6 +75,7 @@ Documentation
 All the documentation for this project is hosted at http://moma-django.readthedocs.org.
 
 
+
 Dependencies
 ============
 * Django 1.4.1
@@ -90,7 +91,7 @@ Quick start
 
 
 Versioning
-----------
+============
 
 Releases will be numbered with the following format:
 
@@ -105,7 +106,7 @@ And constructed with the following guidelines:
 
 
 Bug tracker
------------
+============
 
 Have a bug? Please create an issue here on GitHub that conforms with [the guidelines](https://github.com/).
 
@@ -114,7 +115,7 @@ https://github.com/gadio/moma-django/issues
 
 
 Twitter account
----------------
+===============
 
 Please follow us on Twitter, [@cloudoscope_inc](http://twitter.com/cloudoscope_inc).
 Keep up to date on announcements and more by following Gadi on Twitter, [@gadioren](http://twitter.com/gadioren).

@@ -69,7 +69,22 @@ see the top readme file about contributing...)
 How to run
 ==========
 
-Cloning
+Option 1 - use the installed package
+-------
+This is the "simple option"
+
+1. Following the installation, find your site-packages/moma_django-..... directory. Depending on how you installed it should look like /lib/python2.7/site-packages/moma_django-0.1.0-py2.7.egg/moma_example
+2. Copy the moma_example directory into a temporary area
+3. It is optional but recommended to run the tests at that point (see below)
+4. Create the database:
+   * python ./manage.py syncdb
+   * Define an admin user in the process of the database creation
+5. Run the server:
+   * python ./manage.py runserver 8000
+6. Use a web browser and point it to http://localhost:8000 to use the application
+
+
+Option 2 - Cloning
 -------
 In order to run the example, please follow the next steps:
 
@@ -81,6 +96,10 @@ In order to run the example, please follow the next steps:
 6. Create the database:
    * ./manage.py syncdb
    * Define an admin user in the process of the database creation
+7. Run the server:
+   * python ./manage.py runserver 8000
+8. Use a web browser and point it to http://localhost:8000 to use the application
+
 
 Run tests
 -----------
