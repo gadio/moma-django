@@ -1,15 +1,14 @@
-===============================
-moma-django, a mongo manager for django.
-===============================
+===========
+moma-django
+===========
 
-.. image:: https://badge.fury.io/py/moma-django.png
-    :target: http://badge.fury.io/py/moma-django
-    
-.. image:: https://travis-ci.org/gadio/moma-django.png?branch=master
-        :target: https://travis-ci.org/gadio/moma-django
+:Info: A Mongo Manager for Django, providing native Django ORM support for Mongo DB
+:Version: 0.1.0
+:Maintainer: Gadi Oren (http://cloudoscope.com)
 
-.. image:: https://pypip.in/d/moma-django/badge.png
-        :target: https://crate.io/packages/moma-django?version=latest
+.. image:: https://travis-ci.org/gadio/moma-django.png
+   :alt: Build Status
+   :target: https://travis-ci.org/gadio/moma-django
 
 
 About
