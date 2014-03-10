@@ -123,41 +123,35 @@ Keep up to date on announcements and more by following Gadi on Twitter, [@gadior
 
 
 Blog
-----
+====
 
 Cloudoscope blog can be found [here](http://blog.cloudoscope.com).
 Read more detailed announcements, discussions, and more on [The Official Blog](http://blog.cloudoscope.com).
 
 
 
-Mailing list
-------------
-
-Have a question? Ask on our mailing list!
-
-
-
 Developers
-----------
+==========
 
 How to test: Please read [Example application README](https://github.com/gadio/moma-django/tree/master/moma_example/README.md) about running the unit tests.
 
 
 More information
-----------------
+================
+
 Watch the [presentation] (http://www.slideshare.net/GadiOren/moma-django-overviewshare)
 and the [video] (http://youtu.be/cxQKTDLjb-w)
 
 
 Contributing
-------------
+============
 
 Please submit all pull requests against *-wip branches. When relevant, you must include relevant unit tests. Thanks!
 
 
 
 Authors
--------
+=======
 
 **Gadi Oren**
 
@@ -168,7 +162,7 @@ Additional contributor https://github.com/Alerion (as part of a contract positio
 
 
 Copyright and license
----------------------
+======================
 
 Copyright 2012 Lucidel, Inc., 2013 Cloudoscope Inc.
 
@@ -183,3 +177,9 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+
+Support this project!
+======================
+
+You can hire the lead maintainer to perform dedicated work on this package. Please email gadi.oren.1 at gmail.com.
