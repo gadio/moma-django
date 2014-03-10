@@ -86,8 +86,8 @@ Dependencies
 Quick start
 ===========
 
-* Clone the repo, `git clone git://github.com/gadio/moma-django.git`, [download the latest release](https://github.com/).
-* Please read [Example application README](https://github.com/gadio/moma-django/tree/master/moma_example/README.md) about running the example application.
+* Install (or clone the repo, `git clone git://github.com/gadio/moma-django.git`).
+* Please read "Example application README" (https://github.com/gadio/moma-django/tree/master/moma_example/README.md) about running the example application.
 
 
 Versioning
