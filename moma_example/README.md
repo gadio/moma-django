@@ -73,7 +73,7 @@ Option 1 - use the installed package
 -------
 This is the "simple option"
 
-1. Following the installation, find your site-packages/moma_django-..... directory. Depending on how you installed it should look like /lib/python2.7/site-packages/moma_django-0.1.0-py2.7.egg/moma_example
+1. Following the installation, find your site-packages/moma_django-..... directory. Depending on how you installed it should look like /usr/local/lib/python2.7/site-packages/moma_example or
 2. Copy the moma_example directory into a temporary area
 3. It is optional but recommended to run the tests at that point (see below)
 4. Create the database:

@@ -3,7 +3,7 @@ moma-django
 ===========
 
 :Info: A Mongo Manager for Django, providing native Django ORM support for Mongo DB
-:Version: 0.1.0
+:Version: 0.1.1
 :Maintainer: Gadi Oren (http://cloudoscope.com)
 
 .. image:: https://travis-ci.org/gadio/moma-django.png
@@ -59,7 +59,7 @@ Get pymongo:
 
 Get the code::
 
-    pip install moma-django==0.1.0
+    pip install moma-django
 
 Install the dependency in your settings.py::
 
