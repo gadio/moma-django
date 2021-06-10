@@ -39,7 +39,7 @@ setup(
     package_dir={'moma_django': 'moma_django', 'moma_example': 'moma_example'},
     include_package_data=True,
     install_requires=[
-       'pymongo>=2.1.1', 'django>=1.4, <1.5', 'djangotoolbox>=1.4.0',
+       'pymongo>=2.1.1', 'django>=1.4, <2.3', 'djangotoolbox>=1.4.0',
     ],
     package_data={'moma_example':
                         [
